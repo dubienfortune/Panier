@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Le_Panier.Vues.Register.Etape4"
+             Shell.NavBarIsVisible="False"
+             xmlns:vueM="clr-namespace:Le_Panier.VueModel"
+             xmlns:Model="clr-namespace:Le_Panier.Model"
+             Shell.PresentationMode="Animated"
+             x:DataType="vueM:Etape4VuieModel"
+             
+             >
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+            <GradientStopCollection>
+                <GradientStop Color="#FFCC80" Offset="0"/>
+                <GradientStop Color="#E65100" Offset=".8"/>
+            </GradientStopCollection>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    
+    <Grid RowDefinitions="*">
+       
+        <VerticalStackLayout Grid.Row="0" Padding="20,0" Spacing="25" VerticalOptions="Center" WidthRequest="{OnPlatform WinUI=500}">
+           
+            <Frame VerticalOptions="Center" HasShadow="True" BackgroundColor="White">
+                <VerticalStackLayout Spacing="25" VerticalOptions="Center">
+                    <Label Style="{StaticResource Headline}" Text="Votre Identifiant marchand"/>
+                    <Label Style="{StaticResource SubHeadline}" Text="{Binding Ref_}"/>
+                
+                    <Button BackgroundColor="{StaticResource MidnightBlue}" TextColor="White" Text="Terminer" Command="{Binding TerminerCommand}"/>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+        
+    </Grid>
+</ContentPage>

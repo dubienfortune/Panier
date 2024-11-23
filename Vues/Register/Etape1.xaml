@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Le_Panier.Vues.Register.Etape1"
+             Title="Etape1" Shell.NavBarIsVisible="False"
+             xmlns:vueM="clr-namespace:Le_Panier.VueModel"
+             xmlns:Model="clr-namespace:Le_Panier.Model"
+             x:DataType="vueM:Etape1VueModel"
+             >
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+            <GradientStopCollection>
+                <GradientStop Color="#FFCC80" Offset="0"/>
+                <GradientStop Color="#E65100" Offset=".8"/>
+            </GradientStopCollection>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    <ScrollView>
+        <VerticalStackLayout  Padding="20,0" Spacing="25" VerticalOptions="Center" WidthRequest="{OnPlatform WinUI=500}">
+            <ActivityIndicator IsRunning="True" IsVisible="{Binding IsBusy}" Color="White"/>
+            <Frame VerticalOptions="Center" HasShadow="True" Margin="0,20,0,0" BackgroundColor="White" BorderColor="Transparent" HeightRequest="{OnPlatform WinUI=150}" WidthRequest="{OnPlatform WinUI=150}">
+                <VerticalStackLayout>
+                    <Image Source="{OnPlatform WinUI=logo2.png,Android=logo1.png}" />
+                </VerticalStackLayout>
+            </Frame>
+            <Frame VerticalOptions="Center" HasShadow="True" BackgroundColor="White" BorderColor="Transparent">
+                <VerticalStackLayout Spacing="25">
+                    <Label Text="Inscription" HorizontalTextAlignment="Center"
+                           Style="{StaticResource Headline}"
+                     SemanticProperties.HeadingLevel="Level1" />
+                    <Frame Padding="10,5" HasShadow="True" BackgroundColor="White" >
+                        <Entry Placeholder="Email" Text="{Binding InscriptionModel.email}" TextColor="Black"/>
+                    </Frame>
+                    <Frame Padding="10,5" HasShadow="True" BackgroundColor="White" >
+                        <Entry Placeholder="Mot de passe" MaxLength="8" Text="{Binding InscriptionModel.password}" x:Name="password" TextColor="Black" IsPassword="True"/>
+                    </Frame>
+                    <Frame Padding="10,5" HasShadow="True" x:Name="confirme_password" BackgroundColor="White">
+                        <Entry Placeholder="Confirmer mot de passe" MaxLength="8" Text="{Binding InscriptionModel.confirme_password}" TextColor="Black" IsPassword="True"/>
+                    </Frame>
+                    <Label/>
+                    <Button BackgroundColor="{StaticResource MidnightBlue}" TextColor="White" Text="S'inscrire" Command="{Binding inscriptionCommand}"/>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

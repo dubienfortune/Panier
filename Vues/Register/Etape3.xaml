@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Le_Panier.Vues.Register.Etape3"
+             Shell.NavBarIsVisible="False"
+             xmlns:vueM="clr-namespace:Le_Panier.VueModel"
+             xmlns:Model="clr-namespace:Le_Panier.Model"
+             x:DataType="vueM:Etape3VueModel"
+             Shell.PresentationMode="Animated"
+             >
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+            <GradientStopCollection>
+                <GradientStop Color="#FFCC80" Offset="0"/>
+                <GradientStop Color="#E65100" Offset=".8"/>
+            </GradientStopCollection>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    
+    <Grid RowDefinitions="*">
+       
+        <VerticalStackLayout Grid.Row="0" Padding="20,0" Spacing="25" VerticalOptions="Center" WidthRequest="{OnPlatform WinUI=500}">
+           
+            <Frame VerticalOptions="Center" HasShadow="True" BackgroundColor="White">
+                <VerticalStackLayout Spacing="25" VerticalOptions="Center">
+                    <Frame VerticalOptions="Center" HasShadow="True" Margin="0,20,0,0" BackgroundColor="White" BorderColor="Transparent" HeightRequest="{OnPlatform WinUI=150}" WidthRequest="{OnPlatform WinUI=150}">
+                        <VerticalStackLayout>
+                            <Image Source="{OnPlatform WinUI=logo2.png,Android=logo1.png}" />
+                        </VerticalStackLayout>
+                    </Frame>
+                    <Label Style="{StaticResource SubHeadline}" Text="{Binding Role_id.Name}"/>
+                    <Frame Padding="10,5" HasShadow="True">
+                        <Picker Title="Type de profile" ItemsSource="{Binding ListeRoles}" SelectedItem="{Binding Role_id}" SelectedIndexChanged="Picker_SelectedIndexChanged" ItemDisplayBinding="{Binding Name}" TextColor="Black"/>
+
+                    </Frame>
+
+                    <Button BackgroundColor="{StaticResource MidnightBlue}" TextColor="White" Text="Suivant" Command="{Binding saveUserInfosCommand}"/>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+        <ActivityIndicator IsRunning="True" IsVisible="{Binding IsBusy}"  HeightRequest="50"/>
+
+    </Grid>
+</ContentPage>

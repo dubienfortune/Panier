@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Le_Panier.Vues.Register.Etape2"
+             Shell.NavBarIsVisible="False"
+             xmlns:vueM="clr-namespace:Le_Panier.VueModel"
+             xmlns:Model="clr-namespace:Le_Panier.Model"
+             x:DataType="vueM:Etape2VueModel"
+             Shell.PresentationMode="Animated"
+             >
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+            <GradientStopCollection>
+                <GradientStop Color="#FFCC80" Offset="0"/>
+                <GradientStop Color="#E65100" Offset=".8"/>
+            </GradientStopCollection>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    <ScrollView Padding="0,10,0,10">
+        <Grid>
+                  <VerticalStackLayout  Padding="20,0" Spacing="10" VerticalOptions="Center" WidthRequest="{OnPlatform WinUI=500}">
+           
+            <Frame VerticalOptions="Center" HasShadow="True" BackgroundColor="White" BorderColor="Transparent">
+                <VerticalStackLayout Spacing="25">
+                    <Label Text="Inscription" HorizontalTextAlignment="Center"
+                           Style="{StaticResource Headline}"
+                     SemanticProperties.HeadingLevel="Level1" />
+                  
+                    <Frame Padding="10,5" HasShadow="True" BackgroundColor="White" >
+                        <Entry Placeholder="Nom" Text="{Binding User.nom}" TextColor="Black"/>
+                    </Frame>
+                    <Frame Padding="10,5" HasShadow="True" BackgroundColor="White" >
+                        <Entry Placeholder="Prenom" MaxLength="50" Text="{Binding User.prenom}" TextColor="Black"/>
+                    </Frame>
+                    <Frame Padding="10,5" HasShadow="True" BackgroundColor="White">
+                        <Picker SelectedItem="{Binding User.genre}" Title="Genre" TextColor="Black">
+                            <Picker.Items>
+                                <x:String>Homme</x:String>
+                                <x:String>Femme</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </Frame>
+                
+                    <Frame Padding="10,5" HasShadow="True" BackgroundColor="White">
+                        <Picker Title="Ville" ItemsSource="{Binding Lsville}" ItemDisplayBinding="{Binding name}" SelectedItem="{Binding City}" TextColor="Black"/>
+
+                    </Frame>
+                    <Frame Padding="10,5" HasShadow="True" BackgroundColor="White" >
+                        <Entry Placeholder="Addresse" MaxLength="50" Text="{Binding User.addresse}" TextColor="Black"/>
+                    </Frame>
+                        <Label Text="{Binding Uid}"/>
+                        <Button BackgroundColor="{StaticResource MidnightBlue}" TextColor="White" Text="S'inscrire" Command="{Binding saveUserInfosCommand}"/>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+            <ActivityIndicator IsRunning="True" IsVisible="{Binding IsBusy}" Color="White"/>
+        </Grid>
+  
+    </ScrollView>
+</ContentPage>
